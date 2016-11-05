@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Training" table="training" catalog="students_community">
+        <id name="trainId" type="java.lang.Integer">
+            <column name="train_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="students" class="models.Students" fetch="select">
+            <column name="student_id" not-null="true" />
+        </many-to-one>
+        <property name="trainDesc" type="string">
+            <column name="train_desc" length="65535" not-null="true" />
+        </property>
+        <property name="trainTitle" type="string">
+            <column name="train_title" not-null="true" />
+        </property>
+        <property name="trainPlace" type="string">
+            <column name="train_place" not-null="true" />
+        </property>
+        <property name="trainDate" type="date">
+            <column name="train_date" length="10" not-null="true" />
+        </property>
+        <property name="evaluation" type="int">
+            <column name="evaluation" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

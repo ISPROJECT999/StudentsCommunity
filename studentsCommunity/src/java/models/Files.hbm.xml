@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Files" table="files" catalog="students_community">
+        <id name="fileId" type="java.lang.Integer">
+            <column name="file_id" />
+            <generator class="identity" />
+        </id>
+        <property name="filePath" type="string">
+            <column name="file_path" not-null="true" />
+        </property>
+        <property name="fileType" type="string">
+            <column name="file_type" length="45" not-null="true" />
+        </property>
+        <property name="groupId" type="int">
+            <column name="group_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

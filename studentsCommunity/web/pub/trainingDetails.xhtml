@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+           <f:metadata>
+            
+            <f:event listener="#{trainingDetailsBean.onLoad(param['id'])}" type="preRenderView"/>
+        </f:metadata>
+    <ui:composition template="../template.xhtml">	
+
+        <ui:define name="top">
+
+        </ui:define>
+
+        <ui:define name="content">
+               <h:form>
+            <p:dataTable  var="tr" value="#{trainingDetailsBean.training}"  rowKey="#{tr.trainId}">
+                <f:facet name="header">
+                       #{trainingDetailsBean.title}
+                </f:facet>
+                <p:column headerText="Description">
+                    <h:outputText value="#{tr.trainDesc}" />
+                </p:column>
+                <p:column width="200" headerText="Place">
+                    <h:outputText value="#{tr.trainPlace}" />
+                </p:column>
+                <p:column width="200" headerText="Date">
+                    <h:outputText value="#{tr.trainDate}" />
+                </p:column>
+               <p:column width="200" headerText="Evaluation">
+                  
+                   <p:rating readonly="true" stars="5" value="#{tr.evaluation}" />
+                </p:column>
+                <p:column width="200" headerText="User">
+                    <h:outputText value="#{tr.students.studentId}" />
+                </p:column>
+         
+            </p:dataTable>
+               </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

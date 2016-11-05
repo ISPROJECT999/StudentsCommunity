@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Messages" table="messages" catalog="students_community">
+        <id name="msgId" type="java.lang.Integer">
+            <column name="msg_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="groups" class="models.Groups" fetch="select">
+            <column name="group_id" />
+        </many-to-one>
+        <many-to-one name="users" class="models.Users" fetch="select">
+            <column name="sender" not-null="true" />
+        </many-to-one>
+        <property name="msgTxt" type="string">
+            <column name="msg_txt" length="65535" not-null="true" />
+        </property>
+        <property name="sendTime" type="timestamp">
+            <column name="send_time" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

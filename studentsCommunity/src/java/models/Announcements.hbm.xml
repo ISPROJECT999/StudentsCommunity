@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Announcements" table="announcements" catalog="students_community">
+        <id name="annId" type="java.lang.Integer">
+            <column name="ann_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="students" class="models.Students" fetch="select">
+            <column name="student_id" />
+        </many-to-one>
+        <property name="annDate" type="date">
+            <column name="ann_date" length="10" />
+        </property>
+        <property name="annDesc" type="string">
+            <column name="ann_desc" length="65535" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" />
+        </property>
+    </class>
+</hibernate-mapping>

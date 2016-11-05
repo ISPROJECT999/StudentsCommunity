@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+ <ui:composition template="panel.xhtml">	
+        <ui:define name="panel_title">
+            My Profile
+        </ui:define>
+        <ui:define name="panel_brodcrumb">
+            My Profile
+        </ui:define>
+     
+       <ui:define name="content">
+           <h:form id="f1">
+               
+               <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Horizontal Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="input1" class="col-sm-2 control-label">First Name</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="input1" placeholder="First Name"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input2" class="col-sm-2 control-label">Last Name</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="input2" placeholder="Last Name"/>
+                  </div>
+                </div>
+               <div class="form-group">
+                  <label for="input3" class="col-sm-2 control-label">Picture</label>
+
+                  <div class="col-sm-10">
+                    <input type="file" class="form-control" id="input3" placeholder="Picture"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+                  </div>
+                </div>
+      
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+               
+                <button type="submit" class="btn btn-info pull-right">Save</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+               
+               
+           </h:form>
+           
+           
+       </ui:define>
+     
+ </ui:composition>
+
+</html>
+

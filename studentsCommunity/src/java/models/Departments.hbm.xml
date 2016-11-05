@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Departments" table="departments" catalog="students_community">
+        <id name="deptId" type="java.lang.Integer">
+            <column name="dept_id" />
+            <generator class="identity" />
+        </id>
+        <property name="dept" type="string">
+            <column name="dept" length="45" not-null="true" />
+        </property>
+        <set name="studentses" table="students" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dept_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Students" />
+        </set>
+    </class>
+</hibernate-mapping>

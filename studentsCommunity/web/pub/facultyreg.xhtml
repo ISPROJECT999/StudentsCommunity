@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../template.xhtml">	
+
+        <ui:define name="top">
+
+        </ui:define>
+
+        <ui:define name="content">
+             <script> 
+                
+                function go(){
+                    
+                    location.replace("/studentsCommunity/faces/index.xhtml")
+                }
+         function ajaxCompStatus(){
+         
+               $(".ui-messages-info").addClass("complet")
+              
+                if($(".complet").hasClass("ui-messages-info")){
+                        setTimeout("go()",5000)
+               }
+               
+            }
+          </script>
+            
+            <h:form id="f1">
+                <div class="form-reg">
+                    <p:messages id="messages" autoUpdate="true"/>
+                    <h2>Please fill the following form to complete your regestration.</h2>
+                    <div class="field">
+                        <label>UserName:</label>
+                        <p:inputText  requiredMessage="UserName Value is required." required="true" id="username" value="#{facultyRegBean.username}">
+                        </p:inputText>
+             
+                        <div class="clear"></div>
+                    </div >
+                    <div class="field">
+                        <label>Password:</label>
+                        <p:password validatorMessage="Password must be 6 charecters at lest" requiredMessage="Password Value is required." required="true" value="#{facultyRegBean.password}" feedback="true">
+                        <f:validateLength minimum="6" maximum="32" />
+                        
+                        </p:password>
+                        <div class="clear"></div>
+                    </div>
+       <div class="field">
+                        <label>Faculty Id :</label>
+                        <p:inputText validatorMessage="Faculty Id must be 7 digits or more &quot; your Employee ID &quot;" requiredMessage="Faculty Member Value is required." required="true" value="#{facultyRegBean.facultyid}">
+                            <f:validateLength minimum="7" maximum="9" />
+                        
+                        </p:inputText>
+                        <div class="clear"></div>
+                    </div>
+            
+                    <div class="field">
+                        <label>First Name :</label>
+                        <p:inputText requiredMessage="First Name Value is required." required="true" value="#{facultyRegBean.fname}"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="field">
+                        <label>Last Name :</label>
+                        <p:inputText requiredMessage="Last Name Value is required." required="true" value="#{facultyRegBean.lname}"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="field">
+                        <label>Degree: </label>
+                        <p:selectOneMenu requiredMessage="Degree Value is required." required="true"  id="console" value="#{facultyRegBean.degreeid}" >
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems itemValue="#{degree.degreeId}" itemLabel="#{degree.degree}" value="#{facultyRegBean.degrees}" var="degree" />
+
+                        </p:selectOneMenu>
+                        <div class="clear"></div>
+                    </div>
+                    <p:commandButton oncomplete="ajaxCompStatus()" ajax="true" value="Submit" action="#{facultyRegBean.register()}" />
+                </div>
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

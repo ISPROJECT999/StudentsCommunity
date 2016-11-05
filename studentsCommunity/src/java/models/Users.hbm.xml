@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Users" table="users" catalog="students_community">
+        <id name="userId" type="int">
+            <column name="user_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userName" type="string">
+            <column name="user_name" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="userType" type="int">
+            <column name="user_type" not-null="true" />
+        </property>
+        <property name="isActive" type="int">
+            <column name="is_active" not-null="true" />
+        </property>
+        <set name="messageses" table="messages" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sender" not-null="true" />
+            </key>
+            <one-to-many class="models.Messages" />
+        </set>
+    </class>
+</hibernate-mapping>

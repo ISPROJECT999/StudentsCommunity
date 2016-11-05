@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Requests" table="requests" catalog="students_community">
+        <id name="requestId" type="java.lang.Integer">
+            <column name="request_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="students" class="models.Students" fetch="select">
+            <column name="student_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="officehours" class="models.Officehours" fetch="select">
+            <column name="faculty_id" not-null="true" />
+            <column name="day" not-null="true" />
+            <column name="hour" not-null="true" />
+        </many-to-one>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Officehours" table="officehours" catalog="students_community">
+        <composite-id name="id" class="models.OfficehoursId">
+            <key-property name="facultyId" type="int">
+                <column name="faculty_id" />
+            </key-property>
+            <key-property name="day" type="int">
+                <column name="day" />
+            </key-property>
+            <key-property name="hour" type="int">
+                <column name="hour" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="facultyMembers" class="models.FacultyMembers" update="false" insert="false" fetch="select">
+            <column name="faculty_id" not-null="true" />
+        </many-to-one>
+        <set name="requestses" table="requests" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="faculty_id" not-null="true" />
+                <column name="day" not-null="true" />
+                <column name="hour" not-null="true" />
+            </key>
+            <one-to-many class="models.Requests" />
+        </set>
+    </class>
+</hibernate-mapping>

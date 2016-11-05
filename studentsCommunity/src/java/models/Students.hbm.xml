@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.Students" table="students" catalog="students_community">
+        <id name="studentId" type="int">
+            <column name="student_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="departments" class="models.Departments" fetch="select">
+            <column name="dept_id" not-null="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <property name="studentPic" type="string">
+            <column name="student_pic" />
+        </property>
+        <set name="studentGroupses" table="student_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_id" not-null="true" />
+            </key>
+            <one-to-many class="models.StudentGroups" />
+        </set>
+        <set name="requestses" table="requests" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Requests" />
+        </set>
+        <set name="announcementses" table="announcements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_id" />
+            </key>
+            <one-to-many class="models.Announcements" />
+        </set>
+        <set name="trainings" table="training" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="student_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Training" />
+        </set>
+    </class>
+</hibernate-mapping>

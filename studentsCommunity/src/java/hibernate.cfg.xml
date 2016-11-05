@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/students_community?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="models/Students.hbm.xml"/>
+    <mapping resource="models/Files.hbm.xml"/>
+    <mapping resource="models/Messages.hbm.xml"/>
+    <mapping resource="models/FacultyMembers.hbm.xml"/>
+    <mapping resource="models/FacultyGroups.hbm.xml"/>
+    <mapping resource="models/Announcements.hbm.xml"/>
+    <mapping resource="models/Users.hbm.xml"/>
+    <mapping resource="models/Training.hbm.xml"/>
+    <mapping resource="models/Officehours.hbm.xml"/>
+    <mapping resource="models/Groups.hbm.xml"/>
+    <mapping resource="models/Requests.hbm.xml"/>
+    <mapping resource="models/StudentGroups.hbm.xml"/>
+    <mapping resource="models/Departments.hbm.xml"/>
+    <mapping resource="models/Degrees.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

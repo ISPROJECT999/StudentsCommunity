@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="template.xhtml">	
+
+
+        <ui:define name="top">
+
+        </ui:define>
+
+        <ui:define name="content">
+<video style="position: absolute;z-index:-1;top: 0px;left: 0px;" loop="loop"  autoplay="autoplay">
+  <source src="../video/ad.mp4" type="video/mp4" />
+</video>
+                    <script>
+            $(document).ready(function() {
+                $('.form-login').animate({left: '-100px'}, "fast", function() {
+                    $('.form-login').animate({left: '100px'}, "fast", function() {
+                        $('.form-login').animate({left: '0px'}, "fast");
+                    });
+                });
+                
+               $('body').css('backgroundSize', $(document).width() + 'px' + ' ' + $(document).height() + 'px');
+               $('video').css('width', ($(document).width()) + 'px');
+                $('video').css('hight', $(document).height() + 'px');
+            });
+            
+             $(window).resize(function() {
+
+                $('body').css('backgroundSize', $(document).width() + 'px' + ' ' + $(document).height() + 'px');
+                $('video').css('width', ($(document).width()) + 'px');
+                $('video').css('hight', $(document).height() + 'px');
+
+            });
+          
+
+           
+            
+            function cerror(){
+                $('.form-login').animate({left: '-100px'}, "fast", function() {
+                    $('.form-login').animate({left: '100px'}, "fast", function() {
+                        $('.form-login').animate({left: '0px'}, "fast");
+                    });
+                });                
+                
+                
+            }
+        </script>
+
+
+            <h:form>
+                <div class="form-login">
+                    <p:messages autoUpdate="true"/>
+                    <h2>Login Page</h2>
+                    <div class="field">
+                        <label>UserName:</label>
+                        <p:inputText requiredMessage="UserName Value is required." required="true" value="#{loginBean.username}"/>
+                        <div class="clear"></div>
+                    </div >
+                    <div class="field">
+                        <label>Password:</label>
+                        <p:password requiredMessage="Password Value is required." required="true" value="#{loginBean.password}"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div style="text-align: center">
+                    <p:commandButton oncomplete="cerror()" ajax="false" value="Login" action="#{loginBean.login()}" />
+                
+</div>
+</div>
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+</html>
+

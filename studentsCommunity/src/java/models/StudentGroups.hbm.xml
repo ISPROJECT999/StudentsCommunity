@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.StudentGroups" table="student_groups" catalog="students_community">
+        <composite-id name="id" class="models.StudentGroupsId">
+            <key-property name="studentId" type="int">
+                <column name="student_id" />
+            </key-property>
+            <key-property name="groupId" type="int">
+                <column name="group_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="students" class="models.Students" update="false" insert="false" fetch="select">
+            <column name="student_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="groups" class="models.Groups" update="false" insert="false" fetch="select">
+            <column name="group_id" not-null="true" />
+        </many-to-one>
+        <property name="role" type="java.lang.Integer">
+            <column name="role" />
+        </property>
+        <property name="joinDate" type="date">
+            <column name="join_date" length="10" not-null="true" />
+        </property>
+        <property name="lastMsgSeen" type="java.lang.Integer">
+            <column name="last_msg_seen" />
+        </property>
+    </class>
+</hibernate-mapping>

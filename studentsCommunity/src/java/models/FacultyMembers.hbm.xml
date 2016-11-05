@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="models.FacultyMembers" table="faculty_members" catalog="students_community">
+        <id name="facultyId" type="int">
+            <column name="faculty_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="degrees" class="models.Degrees" fetch="select">
+            <column name="degree" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <property name="facultyPic" type="string">
+            <column name="faculty_pic" />
+        </property>
+        <set name="officehourses" table="officehours" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="faculty_id" not-null="true" />
+            </key>
+            <one-to-many class="models.Officehours" />
+        </set>
+        <set name="facultyGroupses" table="faculty_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="faculty_id" not-null="true" />
+            </key>
+            <one-to-many class="models.FacultyGroups" />
+        </set>
+    </class>
+</hibernate-mapping>
