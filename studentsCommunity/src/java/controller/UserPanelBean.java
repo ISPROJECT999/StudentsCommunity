@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Students;
+import queries.AnnouncementsQR;
 import queries.StudentsQR;
 import queries.TrainingQR;
 
@@ -51,6 +52,22 @@ public class UserPanelBean implements java.io.Serializable{
                
                
 
+    }
+    
+    public int annCount(){
+               FacesContext context = FacesContext.getCurrentInstance();
+               HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+               HttpServletResponse response=(HttpServletResponse) context.getExternalContext().getResponse();
+               Authorization auth=(Authorization)request.getSession().getAttribute("auth");
+               int type=auth.getUserOB().getUserType();
+               
+               if(type==1){
+                  Students s= StudentsQR.getById(auth.getUserOB().getUserId());
+                  return AnnouncementsQR.getByStudentId(s.getStudentId()).size();
+               }
+               
+               return  0;
+    
     }
     public UserPanelBean() {
     }

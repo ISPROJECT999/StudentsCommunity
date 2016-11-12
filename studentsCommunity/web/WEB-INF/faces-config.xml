@@ -44,4 +44,14 @@
         <managed-bean-class>controller.UserPanelBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>profileBean</managed-bean-name>
+        <managed-bean-class>controller.ProfileBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>panelAnnouncementsBean</managed-bean-name>
+        <managed-bean-class>controller.PanelAnnouncementsBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

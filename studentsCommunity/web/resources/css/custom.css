@@ -1,0 +1,30 @@
+.remove-btn{
+    background: url('../images/remove.png');
+
+    display: inline-block;
+    width: 30px;
+    margin:0px 10px;
+    height: 30px;
+   border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+.edit-btn{
+    background: url('../images/edit.png');
+
+    display: inline-block;
+    width: 30px;
+    margin:0px 10px;
+    height: 30px;
+   border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+.edit-btn:hover{
+    background-color: green; 
+}
+.remove-btn:hover{
+background-color: red;      
+}

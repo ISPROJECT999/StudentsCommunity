@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+ <ui:composition template="panel.xhtml">	
+        <ui:define name="panel_title">
+            My Profile
+        </ui:define>
+        <ui:define name="panel_brodcrumb">
+            My Profile
+        </ui:define>
+     
+       <ui:define name="content">
+           <h:form id="f1" enctype="multipart/form-data">
+               
+               <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Horizontal Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="input1" class="col-sm-2 control-label">First Name</label>
+
+                  <div class="col-sm-10">
+                      <h:inputText   value="#{profileBean.fname}" styleClass="form-control" id="input1" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input2" class="col-sm-2 control-label">Last Name</label>
+
+                  <div class="col-sm-10">
+                      <h:inputText value="#{profileBean.lname}" styleClass="form-control" id="input2"/>
+                  </div>
+                </div>
+                          <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                  <div class="col-sm-10">
+                      <h:inputSecret required="false" value="#{profileBean.password}" styleClass="form-control" id="inputPassword3" />
+                  </div>
+                </div>
+               <div class="form-group">
+                  <label for="input3" class="col-sm-2 control-label">Picture</label>
+
+                  <div class="col-sm-10">
+                      <p:fileUpload id="input3" styleClass="form-control" value="#{profileBean.pic}" mode="simple" />
+                      
+                      
+                   
+                  </div>
+                </div>
+        
+      
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+               
+                  <p:commandButton value="Save"  styleClass="btn btn-info pull-right" ajax="false" action="#{profileBean.save}"/>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+               
+               
+           </h:form>
+           
+           
+       </ui:define>
+     
+ </ui:composition>
+
+</html>
+

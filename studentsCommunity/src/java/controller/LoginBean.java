@@ -32,6 +32,11 @@ public class LoginBean {
     }
     
     public void login() throws IOException{
+//        
+//                  Users us= UsersQR.getById(433101070);
+//                 us.setPassword(Encryption.createMd5("123456"));
+//                 UsersQR.flush(us);
+                 
             if(username.equals("") || password.equals(""))
             {
             }else{
@@ -44,7 +49,7 @@ public class LoginBean {
                HttpServletResponse response=(HttpServletResponse) context.getExternalContext().getResponse();
                 request.getSession().setAttribute("auth", new Authorization(u));
 
-                 response.sendRedirect(request.getContextPath()+"/faces/panel.xhtml");   
+                 response.sendRedirect(request.getContextPath()+"/faces/panel/index.xhtml");   
             }else{
             
             }

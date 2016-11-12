@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="../resources/plugins/daterangepicker/daterangepicker.css"/>
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="../resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"/>
-
+       <link rel="stylesheet" href="../resources/css/custom.css"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -42,6 +42,38 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+        
+        
+        <!-- Add jQuery library -->
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="../resources/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="../resources/source/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="../resources/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="../resources/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="../resources/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="../resources/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="../resources/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="../resources/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+        	
+        
+        
+        <script type="text/javascript">
+		$(document).ready(function() {
+
+	 $('.popup').fancybox({
+                    'padding': 5,
+                    'width':'900px'});
+                    });
+                                </script>
     </h:head>
 
     <h:body styleClass="hold-transition skin-blue sidebar-mini">
@@ -90,7 +122,9 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <h:form>
+                                            <h:commandLink action="#{loginBean.logout()}"  styleClass="btn btn-default btn-flat">Sign out</h:commandLink>
+                                            </h:form>
                                         </div>
                                     </li>
                                 </ul>
@@ -148,7 +182,7 @@
                                 <i class="fa fa-pie-chart"></i>
                                 <span>My Announcements</span>
                                 <span class="pull-right-container">
-                                    <span class="label label-primary pull-right">4</span>
+                                    <span class="label label-primary pull-right">#{userPanelBean.annCount()}</span>
                                 </span>
                             </a>
                         </li>

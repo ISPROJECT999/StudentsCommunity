@@ -70,16 +70,24 @@ h1 {
     width: 400px;
     margin: 0 auto;
     border-radius: 10px;
-    background: #000;
+    background: rgba(255,255,255,0.5);
     padding: 20px;
     margin-top: 50px;
     position: relative;
-    box-shadow: 10px 10px 10px #AFAFAF;
+    /* box-shadow: 10px 10px 10px #AFAFAF; */
+    border: 6px solid #000
     
     
 }
+.form-login .field input[type=text],
+.form-login .field input[type=password]{
+        border: 0px none;
+    box-shadow: 0 0 0;
+    width: 283px;
+    
+}
 .form-login h2{
-    color: #fff;
+    color: #000;
     text-align: center;
     
 }
@@ -96,9 +104,26 @@ h1 {
 .ltr .form-login .field label{
     float: left;
     width: 100px;
-    color: #fff;
+    color: #000;
+    font-size: 15px;
 }
-
+.form-login button{
+    background: #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 0;
+    border: 0px none;
+    color: #fff;
+    
+}
+.form-login button:hover{
+      color: #fff;
+        background: rgba(0,0,0,0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 0;
+    border: 0px none;
+}
 .form-reg{
     width: 400px;
     margin: 0 auto;
@@ -177,6 +202,10 @@ color: #000;
     background: rgb(200,200,200);
     color: #000;
 }
+
+
+
+
 @media only screen and (max-width: 600px) {
     body {
         background-color: #000;
