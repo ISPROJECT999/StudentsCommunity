@@ -7,6 +7,7 @@
 package controller;
 
 import common.Authorization;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -26,6 +27,9 @@ public class PanelAnnouncementsBean {
         List<Announcements> announc;
     Announcements selected;
     int studentid;
+    private int annId;
+    private String title;
+    private String desc;
     /**
      * Creates a new instance of PanelAnnouncementsBean
      */
@@ -55,7 +59,48 @@ public class PanelAnnouncementsBean {
     announc=AnnouncementsQR.getByStudentId(sid);
     }
     
+    public void onLoad(String id){
+                if(id!=null){
+                    if(!id.equals("")){
+                        annId=Integer.parseInt(id);
+                        Announcements obj= AnnouncementsQR.getById(annId);
+                        title=obj.getTitle();
+                        desc=obj.getAnnDesc();
+                    }
+                }
     
+    
+    
+    }
+    
+    
+    public void save(){
+    
+              Announcements obj;
+        if(annId!=0){
+        
+           obj= AnnouncementsQR.getById(annId);
+              
+        }else{
+        
+                obj=new Announcements();
+                obj.setAnnDate(new Date());
+                Students s= StudentsQR.getById(studentid);
+
+                
+                obj.setStudents(s);
+        
+        }
+        
+        obj.setTitle(title);
+        obj.setAnnDesc(desc);
+        
+        
+        AnnouncementsQR.flush(obj);
+    
+    
+    
+    }
     
     public List<Announcements> getAnnounc() {
         return announc;
@@ -79,6 +124,30 @@ public class PanelAnnouncementsBean {
 
     public void setStudentid(int studentid) {
         this.studentid = studentid;
+    }
+
+    public int getAnnId() {
+        return annId;
+    }
+
+    public void setAnnId(int annId) {
+        this.annId = annId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
     
     

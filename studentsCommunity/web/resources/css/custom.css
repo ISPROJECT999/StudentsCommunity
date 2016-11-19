@@ -28,3 +28,33 @@
 .remove-btn:hover{
 background-color: red;      
 }
+.message-user{
+    color: #000;
+    font-weight: bold;
+    display: block;
+    
+}
+.message-user img{
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.message-user:hover{
+  background: rgb(200,200,200);
+  color: #000;
+}
+.message-user span {
+    margin-right: 20px;
+}
+.ui-dialog .ui-dialog-content{
+    
+    padding: 0px;
+}
+#chat .col-md-3{
+    padding: 0px!important;
+}
+#chat .ui-dialog-content ui-widget-content{
+    overflow: hidden;
+}

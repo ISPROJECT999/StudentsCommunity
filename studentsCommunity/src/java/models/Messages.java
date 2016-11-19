@@ -1,5 +1,5 @@
 package models;
-// Generated Nov 5, 2016 3:27:17 PM by Hibernate Tools 3.6.0
+// Generated Nov 14, 2016 9:44:25 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -12,7 +12,8 @@ public class Messages  implements java.io.Serializable {
 
      private Integer msgId;
      private Groups groups;
-     private Users users;
+     private Users usersByReceiver;
+     private Users usersBySender;
      private String msgTxt;
      private Date sendTime;
 
@@ -20,14 +21,15 @@ public class Messages  implements java.io.Serializable {
     }
 
 	
-    public Messages(Users users, String msgTxt, Date sendTime) {
-        this.users = users;
+    public Messages(Users usersBySender, String msgTxt, Date sendTime) {
+        this.usersBySender = usersBySender;
         this.msgTxt = msgTxt;
         this.sendTime = sendTime;
     }
-    public Messages(Groups groups, Users users, String msgTxt, Date sendTime) {
+    public Messages(Groups groups, Users usersByReceiver, Users usersBySender, String msgTxt, Date sendTime) {
        this.groups = groups;
-       this.users = users;
+       this.usersByReceiver = usersByReceiver;
+       this.usersBySender = usersBySender;
        this.msgTxt = msgTxt;
        this.sendTime = sendTime;
     }
@@ -46,12 +48,19 @@ public class Messages  implements java.io.Serializable {
     public void setGroups(Groups groups) {
         this.groups = groups;
     }
-    public Users getUsers() {
-        return this.users;
+    public Users getUsersByReceiver() {
+        return this.usersByReceiver;
     }
     
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsersByReceiver(Users usersByReceiver) {
+        this.usersByReceiver = usersByReceiver;
+    }
+    public Users getUsersBySender() {
+        return this.usersBySender;
+    }
+    
+    public void setUsersBySender(Users usersBySender) {
+        this.usersBySender = usersBySender;
     }
     public String getMsgTxt() {
         return this.msgTxt;

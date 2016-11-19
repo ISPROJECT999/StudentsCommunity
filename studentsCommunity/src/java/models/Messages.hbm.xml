@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 5, 2016 3:27:18 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Nov 14, 2016 9:44:28 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="models.Messages" table="messages" catalog="students_community">
         <id name="msgId" type="java.lang.Integer">
@@ -11,7 +11,10 @@
         <many-to-one name="groups" class="models.Groups" fetch="select">
             <column name="group_id" />
         </many-to-one>
-        <many-to-one name="users" class="models.Users" fetch="select">
+        <many-to-one name="usersByReceiver" class="models.Users" fetch="select">
+            <column name="receiver" />
+        </many-to-one>
+        <many-to-one name="usersBySender" class="models.Users" fetch="select">
             <column name="sender" not-null="true" />
         </many-to-one>
         <property name="msgTxt" type="string">

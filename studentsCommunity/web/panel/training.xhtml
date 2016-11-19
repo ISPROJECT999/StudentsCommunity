@@ -7,10 +7,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
  <ui:composition template="panel.xhtml">	
         <ui:define name="panel_title">
-            My Profile
+           Training Experiments
         </ui:define>
         <ui:define name="panel_brodcrumb">
-            My Profile
+          Training Experiments
         </ui:define>
      
        <ui:define name="content">
@@ -19,25 +19,36 @@
                <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Horizontal Form</h3>
+              
+                                  
+
+              <a href="trainedit.xhtml" class="popup fancybox fancybox.iframe btn btn-info pull-right" >Add New</a>
+                     
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="form-horizontal">
               <div class="box-body">
 
-                  <p:dataTable id="data" styleClass="table-link"  var="ann" value="#{panelAnnouncementsBean.announc}"  rowKey="#{ann.annId}">
+                  <p:dataTable id="data" styleClass="table-link"  var="tr" value="#{panelTrainingBean.training}"  rowKey="#{tr.trId}">
                 <f:facet name="header">
-                    Announcements
+                    Training Experiments
                 </f:facet>
                 <p:column headerText="Title">
-                  <h:outputText value="#{ann.title}" />
+                    <h:outputText value="#{tr.trainTitle}" />
+                </p:column>
+                 <p:column headerText="Place">
+                     <h:outputText value="#{tr.trainPlace}" />
+                </p:column>
+                <p:column width="200" headerText="Rating">
+                  <p:rating readonly="true" stars="5" value="#{tr.evaluation}" />
                 </p:column>
                 <p:column width="200" headerText="Date">
-                    <h:outputText value="#{ann.annDate}" />
+                    <h:outputText value="#{tr.trainDate}" />
                 </p:column>
                 <p:column width="100" headerText="Action">
-                    <a class="popup edit-btn fancybox fancybox.iframe"   href="annedit.xhtml?id=#{ann.annId}"></a>
-                    <p:commandLink update=":f1:data" ajax="true" styleClass="remove-btn" actionListener="#{panelAnnouncementsBean.delete(ann.annId,panelAnnouncementsBean.studentid)}" value=""/>
+                    <a class="popup edit-btn fancybox fancybox.iframe"   href="trainedit.xhtml?id=#{tr.trainId}"></a>
+                    <p:commandLink update=":f1:data" ajax="true" styleClass="remove-btn" actionListener="#{panelTrainingBean.delete(tr.trainId,panelTrainingBean.studentid)}" value=""/>
                  
                 </p:column>
          

@@ -54,4 +54,15 @@
         <managed-bean-class>controller.PanelAnnouncementsBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    
+        <managed-bean>
+        <managed-bean-name>panelTrainingBean</managed-bean-name>
+        <managed-bean-class>controller.PanelTrainingBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>panelOneMessagesBean</managed-bean-name>
+        <managed-bean-class>controller.PanelOneMessagesBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

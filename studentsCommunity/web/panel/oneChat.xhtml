@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <f:metadata>
+
+        <f:event listener="#{panelOneMessagesBean.onLoad(param['uid'])}" type="preRenderView"/>
+    </f:metadata>
+    <ui:composition template="chat.xhtml">	
+
+
+        <ui:define name="content">
+            <h:form id="f1">
+                <h:inputText value="#{panelOneMessagesBean.userId}"  style="display: none" />
+                <div class="col-md-3" style=" padding: 0px">
+                    <!-- DIRECT CHAT PRIMARY -->
+                    <div class="box box-primary direct-chat direct-chat-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Direct Chat</h3>
+
+                            <div class="box-tools pull-right">
+                    
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                               
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- Conversations are loaded here -->
+                            <div class="direct-chat-messages">
+                                <!-- Message. Default to the left -->
+                                <ui:repeat value="#{panelOneMessagesBean.chats}" var="m" varStatus="loop">
+                                    <h:panelGroup rendered="#{m.usersBySender.userId==panelOneMessagesBean.userId}">
+                                        
+                                        <div class="direct-chat-msg">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-left">#{panelOneMessagesBean.getChatName(m.usersBySender.userId)}</span>
+                                        <span class="direct-chat-timestamp pull-right">#{m.sendTime}</span>
+                                    </div>
+                                    <!-- /.direct-chat-info -->
+                                    <img class="direct-chat-img" src="#{panelOneMessagesBean.getChatPic(m.usersBySender.userId)}" alt="Message User Image"/><!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                      #{m.msgTxt}
+                                    </div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+                                <!-- /.direct-chat-msg -->
+                                    </h:panelGroup>
+                                    
+                                     <h:panelGroup rendered="#{m.usersBySender.userId!=panelOneMessagesBean.userId}">
+                                        
+                                        <div class="direct-chat-msg right">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-right">#{panelOneMessagesBean.getChatName(m.usersBySender.userId)}</span>
+                                        <span class="direct-chat-timestamp pull-left">#{m.sendTime}</span>
+                                    </div>
+                                    <!-- /.direct-chat-info -->
+                                    <img class="direct-chat-img" src="#{panelOneMessagesBean.getChatPic(m.usersBySender.userId)}" alt="Message User Image"/><!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                      #{m.msgTxt}
+                                    </div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+                                <!-- /.direct-chat-msg -->
+                                    </h:panelGroup>
+                                </ui:repeat>
+
+                         
+                            </div>
+                            <!--/.direct-chat-messages-->
+
+                            <!-- Contacts are loaded here -->
+                            <div class="direct-chat-contacts">
+                                <ul class="contacts-list">
+                                    <li>
+                                        <a href="#">
+                                            <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Image"/>
+
+                                            <div class="contacts-list-info">
+                                                <span class="contacts-list-name">
+                                                    Count Dracula
+                                                    <small class="contacts-list-date pull-right">2/28/2015</small>
+                                                </span>
+                                                <span class="contacts-list-msg">How have you been? I was...</span>
+                                            </div>
+                                            <!-- /.contacts-list-info -->
+                                        </a>
+                                    </li>
+                                    <!-- End Contact Item -->
+                                </ul>
+                                <!-- /.contatcts-list -->
+                            </div>
+                            <!-- /.direct-chat-pane -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <form action="#" method="post">
+                                <div class="input-group">
+                                    <input type="text" name="message" placeholder="Type Message ..." class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>
+                    <!--/.direct-chat -->
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,5 +1,5 @@
 package models;
-// Generated Nov 5, 2016 3:27:17 PM by Hibernate Tools 3.6.0
+// Generated Nov 14, 2016 9:44:25 PM by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -16,7 +16,8 @@ public class Users  implements java.io.Serializable {
      private String password;
      private int userType;
      private int isActive;
-     private Set messageses = new HashSet(0);
+     private Set messagesesForReceiver = new HashSet(0);
+     private Set messagesesForSender = new HashSet(0);
 
     public Users() {
     }
@@ -29,13 +30,14 @@ public class Users  implements java.io.Serializable {
         this.userType = userType;
         this.isActive = isActive;
     }
-    public Users(int userId, String userName, String password, int userType, int isActive, Set messageses) {
+    public Users(int userId, String userName, String password, int userType, int isActive, Set messagesesForReceiver, Set messagesesForSender) {
        this.userId = userId;
        this.userName = userName;
        this.password = password;
        this.userType = userType;
        this.isActive = isActive;
-       this.messageses = messageses;
+       this.messagesesForReceiver = messagesesForReceiver;
+       this.messagesesForSender = messagesesForSender;
     }
    
     public int getUserId() {
@@ -73,12 +75,19 @@ public class Users  implements java.io.Serializable {
     public void setIsActive(int isActive) {
         this.isActive = isActive;
     }
-    public Set getMessageses() {
-        return this.messageses;
+    public Set getMessagesesForReceiver() {
+        return this.messagesesForReceiver;
     }
     
-    public void setMessageses(Set messageses) {
-        this.messageses = messageses;
+    public void setMessagesesForReceiver(Set messagesesForReceiver) {
+        this.messagesesForReceiver = messagesesForReceiver;
+    }
+    public Set getMessagesesForSender() {
+        return this.messagesesForSender;
+    }
+    
+    public void setMessagesesForSender(Set messagesesForSender) {
+        this.messagesesForSender = messagesesForSender;
     }
 
 

@@ -61,6 +61,24 @@ public class TrainingQR {
         return new ArrayList<Training>();
 
     }
+        
+            
+        
+    
+           public static List<Training> getByPlace(String title) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        session.beginTransaction().begin();
+        Query q = session.createQuery("select s from Training s where s.trainPlace like :title").setParameter("title", "%"+title+"%");
+        List<Training> l = q.list();
+         session.close();
+        if (l.size() > 0) {
+            return l;
+        }
+
+        return new ArrayList<Training>();
+
+    }        
     
            public static List<Training> getByTitle(String title) {
         Session session = HibernateUtil.getSessionFactory().openSession();

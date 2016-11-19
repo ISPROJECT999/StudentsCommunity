@@ -31,7 +31,7 @@ CREATE TABLE `announcements` (
   PRIMARY KEY (`ann_id`),
   KEY `ann_students_fk_idx` (`student_id`),
   CONSTRAINT `ann_students_fk` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `announcements` (
 
 LOCK TABLES `announcements` WRITE;
 /*!40000 ALTER TABLE `announcements` DISABLE KEYS */;
-INSERT INTO `announcements` VALUES (2,'2016-11-12','dddddd1','ttttt1',433101070),(5,'2016-11-12','dddddd4','ttttt4',433101070);
+INSERT INTO `announcements` VALUES (2,'2016-11-12','dddddd1','ttttt1',433101070),(5,'2016-11-12','dddddd4','ttttt4',433101070),(6,'2016-11-14','test','test add form ',433101070),(7,'2016-11-14','ffff','ffff',433101070);
 /*!40000 ALTER TABLE `announcements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,12 +214,15 @@ CREATE TABLE `messages` (
   `send_time` datetime NOT NULL,
   `sender` int(11) NOT NULL,
   `group_id` int(11) DEFAULT NULL,
+  `receiver` int(11) DEFAULT NULL,
   PRIMARY KEY (`msg_id`),
   KEY `mesages_groups_fk_idx` (`group_id`),
   KEY `messages_sender_fk_idx` (`sender`),
+  KEY `messages_receiver_fk_idx` (`receiver`),
   CONSTRAINT `mesages_groups_fk` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `messages_receiver_fk` FOREIGN KEY (`receiver`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `messages_sender_fk` FOREIGN KEY (`sender`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,6 +231,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+INSERT INTO `messages` VALUES (1,'mmmm1','2016-11-19 16:25:58',433103560,NULL,433101070),(2,'mmmm2','2016-11-19 16:26:22',433101070,NULL,433103560),(3,'mmmm3','2016-11-19 18:14:08',433103560,NULL,433101070),(4,'mmmm4','2016-11-19 18:14:08',433101070,NULL,433103560),(5,'mmmm5','2016-11-19 18:14:21',433103560,NULL,433101070),(6,'mmmm6','2016-11-19 18:14:21',433101070,NULL,433103560),(7,'mmmm7','2016-11-19 18:14:30',433103560,NULL,433101070),(8,'mmmm8','2016-11-19 18:14:37',433103560,NULL,433101070),(9,'mmmm9','2016-11-19 18:14:50',433101070,NULL,433103560);
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +347,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (433101070,'mohammed ertyu','asdfg','433101070@student.ksu.edu.sa',2,'../userPic/aa.jpg'),(433103560,'jdisjfovk','jdkdkdkdo','433103560@student.ksu.edu.sa',2,NULL),(438871988,'hhhchg','rlkgnvlsl','438871988@student.ksu.edu.sa',2,NULL),(438871999,'yaser','kdnfre','438871999@student.ksu.edu.sa',2,NULL);
+INSERT INTO `students` VALUES (433101070,'mohammed ertyu','asdfg','433101070@student.ksu.edu.sa',2,'../userPic/aa.jpg'),(433103560,'jdisjfovk','jdkdkdkdo','433103560@student.ksu.edu.sa',2,'../userPic/aa.jpg'),(433103561,'abc','dcdc','433103561@student.ksu.edu.sa',2,NULL),(438871988,'hhhchg','rlkgnvlsl','438871988@student.ksu.edu.sa',2,NULL),(438871999,'yaser','kdnfre','438871999@student.ksu.edu.sa',2,NULL);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +369,7 @@ CREATE TABLE `training` (
   PRIMARY KEY (`train_id`),
   KEY `training_students_fk_idx` (`student_id`),
   CONSTRAINT `training_students_fk` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,7 +378,7 @@ CREATE TABLE `training` (
 
 LOCK TABLES `training` WRITE;
 /*!40000 ALTER TABLE `training` DISABLE KEYS */;
-INSERT INTO `training` VALUES (1,'dfghjkl;kjhgfhjk','jhgfdghj','hjkhgfdghjk','2016-01-01',433101070,3);
+INSERT INTO `training` VALUES (2,'fgfgfgfgfgf','test add form','stc','2016-11-14',433101070,3),(3,'sghjkdsfgh','tttt2','samasofts','2016-11-14',433101070,0),(4,'hjhgj','fghjklkjhgfdg','samasofts','2016-11-14',433101070,5);
 /*!40000 ALTER TABLE `training` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +406,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (12345967,'songbiao','he8dtfu2a89ivtbn4df4mifbb',2,1),(433101070,'433101070','45jar1vb6k6bodk2n4fvvbb32t',1,1),(433103560,'433103560','2828jf14o6vkfg11f5ooenv542',1,1),(438871988,'438871988','7uetmhp34hase04v7om4bi437s',1,1),(438871999,'438871999','57bib2rcavederhumtlvgfd0ev',1,1);
+INSERT INTO `users` VALUES (12345967,'songbiao','he8dtfu2a89ivtbn4df4mifbb',2,1),(433101070,'433101070','45jar1vb6k6bodk2n4fvvbb32t',1,1),(433103560,'433103560','2828jf14o6vkfg11f5ooenv542',1,1),(433103561,'433103561','he8dtfu2a89ivtbn4df4mifbb',1,1),(438871988,'438871988','7uetmhp34hase04v7om4bi437s',1,1),(438871999,'438871999','57bib2rcavederhumtlvgfd0ev',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -415,4 +419,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 18:12:38
+-- Dump completed on 2016-11-19 18:31:06
